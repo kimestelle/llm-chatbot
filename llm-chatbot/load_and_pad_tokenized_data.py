@@ -1,3 +1,5 @@
+# python3 /Users/estellekim/Projects/llm-chatbot/load_and_pad_tokenized_data.py
+
 import torch
 from process_data import get_pad_id
 
@@ -10,6 +12,7 @@ def load_tokenized_data(file_path):
     return tokenized_data
 
 def pad_and_save_data(tokenized_data, output_file_path, pad_id):
+#  pad_id = 0
     max_seq_len = max(len(tokens) for tokens in tokenized_data)
 
     padded_sentences = [tokens + [pad_id] * (max_seq_len - len(tokens)) for tokens in tokenized_data]
@@ -30,3 +33,4 @@ if __name__ == "__main__":
     pad_id = get_pad_id()
 
     pad_and_save_data(tokenized_data, 'padded_processed_plato.txt', pad_id)
+    # make pad id 0 if llama alg requires

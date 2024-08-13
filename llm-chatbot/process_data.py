@@ -1,9 +1,11 @@
+# python3 /Users/estellekim/Projects/llm-chatbot/process_data.py
+
 import os
 import sentencepiece as spm
 
 def process_file():
     if os.path.isfile('plato.txt'):
-        spm.SentencePieceTrainer.Train('--input=plato.txt --model_prefix=m --vocab_size=20000 --split_by_whitespace=False')
+        spm.SentencePieceTrainer.Train('--input=plato.txt --model_prefix=m --vocab_size=1000 --model_type=char --split_by_whitespace=False')
 
         sp = spm.SentencePieceProcessor()
         sp.load('m.model')
